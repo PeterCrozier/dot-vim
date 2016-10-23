@@ -41,3 +41,6 @@ Managing bundles
 		git push
 
 
+* To remove a submodule from the directory use
+
+		git submodule deinit --force bundle/vim-fugitive
