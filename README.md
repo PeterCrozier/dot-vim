@@ -28,6 +28,7 @@ Installing .vim
 		git submodule init
 		git submodule update
 
+* Build the help paths with `:Helptags`
 
 Managing bundles
 ----------------
