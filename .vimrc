@@ -148,8 +148,10 @@ let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
 "let g:syntastic_check_on_wq = 0
 
 " ultisnips snippet library
-let g:UltiSnipsExpandTrigger="<C-A>"
-let g:UltiSnipsListSnippets="<C-L>"
-let g:UltiSnipsJumpForwardTrigger="<C-B>"
-let g:UltiSnipsJumpBackwardTrigger="<C-Z>"
-
+let g:UltiSnipsExpandTrigger		= "<C-J>"
+let g:UltiSnipsListSnippets		= "<C-L>"
+let g:UltiSnipsJumpForwardTrigger	= "<TAB>"
+let g:UltiSnipsJumpBackwardTrigger	= "<C-TAB>"
+let g:ultisnips_python_style="doxygen"
+let g:UltiSnipsEnableSnipMate=0
+let g:UltiSnipsSnippetsDir="~/.vim/UltiSnips"

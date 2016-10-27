@@ -1,0 +1,78 @@
+snippet if "if statement"
+if (${1}) begin
+	${0}
+end
+endsnippet
+
+snippet ife "if/else statements"
+if (${1}) begin
+	${2}
+end
+else begin
+	${1}
+end
+endsnippet
+
+snippet eif "else if statement"
+else if (${1}) begin
+	${0}
+end
+endsnippet
+
+snippet el "else statement"
+else begin
+	${0}
+end
+endsnippet
+
+snippet wh "while statement"
+while (${1}) begin
+	${0}
+end
+endsnippet
+
+snippet rep "repeat Loop"
+repeat (${1}) begin
+	${0}
+end
+endsnippet
+
+snippet case "case statement"
+case (${1:/* variable */})
+	${2:/* value */}: begin
+		${3}
+	end
+	default: begin
+		${4}
+	end
+endcase
+endsnippet
+
+snippet casez "caseZ statement"
+casez (${1:/* variable */})
+	${2:/* value */}: begin
+		${3}
+	end
+	default: begin
+		${4}
+	end
+endcase
+endsnippet
+
+snippet al "always block"
+always @(${1:/* sensitive list */}) begin
+	${0}
+end
+endsnippet
+
+snippet mod "module block"
+module ${1:module_name} (
+	${2}
+	);
+	${0}
+endmodule
+endsnippet
+
+snippet inc "include"
+\`include "${1:header_file.vh}"
+endsnippet
