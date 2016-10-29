@@ -1,0 +1,25 @@
+
+
+snippet r "Read Only Property" b
+@property
+def ${1:name}(self):
+	${2:return self._$1}$0
+endsnippet
+
+snippet rw "Read/write Property" b
+@property
+def ${1:name}(self):
+	${2:return self._$1}
+
+@$1.setter
+def $1(self, value):
+	${3:self._$1 = value}
+$0
+endsnippet
+
+snippet " "triple quoted doc string (double quotes on one line)" b
+""" ${1:${VISUAL:doc}} """$0
+endsnippet
+
+# python tab settings
+# vim: set et sw=4 ts=4:
