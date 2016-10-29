@@ -13,3 +13,24 @@ endsnippet
 snippet rw "attr_accessor"
 attr_accessor :${0:attr_names}
 endsnippet
+
+snippet # "interpolated code in a string" i
+#{$1}$0
+endsnippet
+
+snippet opts "Option parser block"
+require 'optparse'
+options = {}
+opp = OptionParser.new do |opts|
+	opts.banner = "Usage: #{$0} [options] infile"
+	opts.separator "Options:"
+	opts.on("-o", "--output FILE", "output file") { |v| options[:outfile] = v }
+end
+args = opp.parse!
+
+unless args.count == 1
+	opp.warn("Missing infile")
+	exit 1
+end
+infile = args[0]
+endsnippet

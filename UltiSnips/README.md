@@ -39,6 +39,8 @@ python
 | key    | expands to                                   |
 |:-------|:---------------------------------------------|
 | #!     | at start of first line #!/usr/bin/env/python |
+| "      | triple quote docstring on 1 line             |
+| doc    | triple quote docstring on 3 lines            |
 | ifmain | calls main() if not a module                 |
 | from   | from module import name                      |
 | def    | function with docstring                      |
@@ -46,8 +48,8 @@ python
 | attr   | template methods for attribute access        |
 | desc   | template methods for descriptors             |
 | cmp    | template methods for comparison              |
-| roprop | read only property, getter only              |
-| rwprop | read-write property with setter and getter   |
+| r      | read only property, getter only              |
+| rw     | read-write property with setter and getter   |
 | ld     | lambda                                       |
 | ipdb   | insert breakpoint                            |
 | getopt | option processing block                      |
