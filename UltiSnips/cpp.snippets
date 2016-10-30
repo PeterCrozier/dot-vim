@@ -1,0 +1,26 @@
+# C snippets are already available
+
+snippet ios "#include <iostream>" b
+#include <iostream>$0
+endsnippet
+
+snippet use "using namespace" b
+using namespace ${1:std};$0
+endsnippet
+
+snippet fora "Loop: for (auto i=0;i<count;i++) "
+for (auto ${1:i} = 0; $2 < ${2:count}; ${3:$1++}) {
+	$0
+}
+endsnippet
+
+snippet forin "Loop: for (auto &x: container) "
+for (auto &${1:x}: ${2:c}) {
+	$0
+}
+endsnippet
+
+snippet ld "C++14 Lambda"
+auto ${1:name} = [${2:&}](${3:auto x}) {${5: return x;}};$0
+endsnippet
+

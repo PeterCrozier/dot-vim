@@ -1,0 +1,35 @@
+snippet cmk "Basic Makefile for C,C++"
+CC=clang
+CFLAGS=-g
+
+CXX=clang++
+CXXFLAGS=-std=c++14 -lstdc++ -g
+
+LDFLAGS=
+LDLIBS=
+
+TGTS=${1:a}
+
+.PHONY: all
+all: $(TGTS)
+
+$0
+
+.PHONY: clean
+clean:
+	rm -rf *.dSYM
+	rm -f tags $(TGTS)
+
+.PHONY: tags
+tags:
+	ctags  *.{c,cpp}
+endsnippet
+
+snippet crib "cribsheet for gmake variables"
+# $@	filename of rule target
+# $<	first prerequisite
+# $?	names of all prerequisites newer than target
+# $^	names of all prerequisites
+# $*	matching stem
+# append D for directory part and F for file part e.g. $(@F)
+endsnippet

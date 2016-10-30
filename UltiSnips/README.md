@@ -36,36 +36,36 @@ markdown
 python
 ------
 
-| key    | expands to                                   |
-|:-------|:---------------------------------------------|
-| #!     | at start of first line #!/usr/bin/env/python |
-| "      | triple quote docstring on 1 line             |
-| doc    | triple quote docstring on 3 lines            |
-| ifmain | calls main() if not a module                 |
-| from   | from module import name                      |
-| def    | function with docstring                      |
-| class  | class template including a constructor       |
-| attr   | template methods for attribute access        |
-| desc   | template methods for descriptors             |
-| cmp    | template methods for comparison              |
-| r      | read only property, getter only              |
-| rw     | read-write property with setter and getter   |
-| ld     | lambda                                       |
-| ipdb   | insert breakpoint                            |
-| getopt | option processing block                      |
+| key    | expands to                                     |
+|:-------|:-----------------------------------------------|
+| #!     | at start of first line `#!/usr/bin/env/python` |
+| "      | triple quote docstring on 1 line               |
+| doc    | triple quote docstring on 3 lines              |
+| ifmain | calls main() if not a module                   |
+| from   | from module import name                        |
+| def    | function with docstring                        |
+| class  | class template including a constructor         |
+| attr   | template methods for attribute access          |
+| desc   | template methods for descriptors               |
+| cmp    | template methods for comparison                |
+| r      | read only property, getter only                |
+| rw     | read-write property with setter and getter     |
+| ld     | lambda                                         |
+| ipdb   | insert breakpoint                              |
+| getopt | option processing block                        |
 
 ruby
 ----
 
 | key   | expands to                                   |
 |:------|:---------------------------------------------|
-| #!    | at start of first line #!/usr/bin/env/ruby   |
+| #!    | at start of first line `#!/usr/bin/env/ruby` |
 | class | class template including a constructor       |
-| defi  | class constructor only, def initialise()     |
-| r     | attr_reader                                  |
-| w     | attr_writer                                  |
-| rw    | attr_accessor                                |
-| For   | for x..y.each {}                             |
+| defi  | class constructor only, `def initialize()`   |
+| r     | `attr_reader`                                |
+| w     | `attr_writer`                                |
+| rw    | `attr_accessor`                              |
+| For   | `for x..y.each {}`                           |
 | case  | case with a when, must follow a space or tab |
 | sw    | same as case                                 |
 | optp  | option parser block                          |
@@ -74,10 +74,36 @@ ruby
 bash
 ----
 
-| key   | expands to                                 |
-|:------|:-------------------------------------------|
-| #!    | at start of first line #!/usr/bin/env/bash |
-| temp  | create a temp file                         |
-| if    | if .. fi template                          |
-| case  | case .. esac template                      |
-| while | while .. done template                     |
+| key   | expands to                                   |
+|:------|:---------------------------------------------|
+| #!    | at start of first line `#!/usr/bin/env/bash` |
+| temp  | create a temp file                           |
+| if    | if .. fi template                            |
+| case  | case .. esac template                        |
+| while | while .. done template                       |
+
+C
+-
+
+| key   | expands to                       |
+|:------|:---------------------------------|
+| main  | main function with args          |
+| stdio | `#include <stdio.h>`             |
+| {     | start a block                    |
+| fori  | `for (int i; i < count; i++) {}` |
+
+C++
+---
+
+includes all the C snippets
+
+| key   | expands to                        |
+|:------|:----------------------------------|
+| ios   | `#include <iostream>`             |
+| use   | `using namespace std;`            |
+| ns    | namespace wrapper                 |
+| ld    | lambda                            |
+| fora  | `for (auto i; i < count; i++) {}` |
+| forin | `for (auto %x: c) {}`             |
+| vec   | `std::vector<int> v;`             |
+| map   | `std::map<key, value> m;`         |

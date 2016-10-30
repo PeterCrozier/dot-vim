@@ -10,21 +10,11 @@ set ignorecase smartcase
 " make default buffer same as clipboard
 set clipboard+=unnamed
 
-if $BC != ""
-	" set path used for searching
-	set path=.,$MASTER,$BC/kclient,$BC/shared,$BC/**
-
-	" tags file
-	set tags=./tags,$BC/mastertags
-	set viminfo='50,\"1000,:0,n$MASTER/viminfo
-endif
-
-
 " keyboard maps
-	" F12 for next error in normal mode
-	map <F12> <ESC>:cn<CR>
-	" CTRL-C to copy in visual mode
-	vmap <C-C>	"*y
+" F12 for next error in normal mode
+map <F12> <ESC>:cn<CR>
+" CTRL-C to copy in visual mode
+vmap <C-C>	"*y
 
 " map \d to run Dash via the Dash.vim plugin
 :nmap <silent> <leader>d <Plug>DashSearch
@@ -33,6 +23,9 @@ endif
 " turn on syntax coloring and filetype detection
 syntax on
 filetype on
+
+" don't create .netrwhist file if you edit a directory file
+let g:netrw_dirhistmax = 0
 
 " pathogen support
 " Run :Helptags to add local help docs from ~/.vim/bundle if you add/change any plugins
@@ -92,8 +85,6 @@ autocmd BufRead,BufNewFile *.coffee setlocal expandtab smarttab shiftwidth=2 ts=
 let c_space_errors=1
 let ruby_space_errors=1
 
-" use last line for position
-set ruler
 
 " Octave/Matlab syntax overriding Objective C
 function MatTabs ()
@@ -128,16 +119,45 @@ endif
 " support ctags if available
 set tags=./tags;$HOME
 
-" run clang-format via CTRL-K
-map <C-K> :pyfile /usr/local/bin/clang-format.py<cr><cr>
+" run clang-format via CTRL-K TODO C,C++ only?
+" formats current line in normal mode or the selected region in visual mode
+"map <C-K> :pyfile /usr/local/bin/clang-format.py<cr><cr>
 
 " fancy matching begin/end in verilog, ruby etc.
 " included as a macro in vim 6.0+
 runtime macros/matchit.vim
 
+
+" force status line on all windows
+set laststatus=2
+set ruler
+
+" make status line change colour with mode
+function! InsertStatuslineColor(mode)
+	if a:mode == 'i'	" insert mode
+    		highlight StatusLine guibg=LightRed ctermfg=5 guifg=Black ctermbg=0
+	elseif a:mode == 'r'	" replace mode
+    		highlight StatusLine guibg=Red ctermfg=5 guifg=Black ctermbg=0
+	else
+    		highlight StatusLine guibg=Cyan ctermfg=5 guifg=Black ctermbg=0
+	endif
+endfunction
+
+au InsertEnter * call InsertStatuslineColor(v:insertmode)
+au InsertChange * call InsertStatuslineColor(v:insertmode)
+au InsertLeave * highlight StatusLine guibg=DarkGreen ctermfg=8 guifg=White ctermbg=15
+
+" default the statusline to green initially
+highlight StatusLine guibg=DarkGreen ctermfg=8 guifg=White ctermbg=15
+" colour for inactive split screen
+highlight StatusLineNC guibg=Grey ctermfg=8 guifg=White ctermbg=15
+
+
+
 " syntastic flags
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
+
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
 "set statusline+=%*
