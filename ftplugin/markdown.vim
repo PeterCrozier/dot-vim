@@ -4,5 +4,8 @@
 " enable spell check
 :setlocal spell spelllang=en_gb
 
-" fixup tables in markdown
-nmap <F15> !}norm_table.py<CR>
+" fixup tables
+nmap <leader>t !}~/.vim/scripts/norm_table.py<CR>
+
+" fixup headings
+nmap <leader>h :%!~/.vim/scripts/norm_hdrs.py<CR>
