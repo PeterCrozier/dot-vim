@@ -27,14 +27,17 @@ all languages
 markdown
 --------
 
-| key    | expands to             |
-|:-------|:-----------------------|
-| link   | link                   |
-| img    | image                  |
-| fnt    | footnote               |
-| cbl    | codeblock              |
-| refl   | reference link         |
-| **ms** | `Marked Style: EdMath` |
+| key       | expands to                   |
+|:----------|:-----------------------------|
+| link      | link                         |
+| img       | image                        |
+| fnt       | footnote                     |
+| cbl       | codeblock                    |
+| refl      | reference link               |
+| **ms**    | `Marked Style: EdMath`       |
+| **$**     | `\\( \\)`                    |
+| **$$**    | `\\[ \\]`                    |
+| **align** | `\begin{align}..\end{align}` |
 
 You can use `\h` to fixup all headings and `\t` to fixup a table.
 
