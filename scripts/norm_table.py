@@ -1,7 +1,10 @@
 #!/usr/bin/python
-
-# Python 2.7
-
+"""
+    Layout a markdown table in canonical form justifying all the columns.
+    Assumes stdin contains only the table with maybe some leading or trailing blank lines.
+    Outputs the new table to stdout.
+"""
+# incase we are using Python 2.7 by default
 from __future__ import print_function
 
 import sys
@@ -10,18 +13,18 @@ import re
 def just(string, jtype, width):
     """Justify a string to length len according to type."""
 
-    if jtype == '::':
+    if jtype == ':-' or jtype == '--':
+        return string.ljust(width)
+    elif jtype == '::':
         return string.center(width)
     elif jtype == '-:':
         return string.rjust(width)
-    elif jtype == ':-':
-        return string.ljust(width)
     else:
         return string
 
 
 def normtable(text):
-    """Aligns the vertical bars in a text table."""
+    """ Aligns the vertical bars in a text table """
 
     # Start by turning the text into a list of lines.
     lines = text.splitlines()
@@ -30,21 +33,23 @@ def normtable(text):
     formatted = []
 
     # pass through any leading lines not part of table
+    leading = 0
     for line in lines:
         if '|' in line:
             break
         formatted.append(line)
+        leading += 1
 
-    # Figure out the cell formatting.
+    # Found heading line, figure out the cell formatting.
     # First, find the separator line.
     formatline = None
     formatrow = None
-    for i, rawline in enumerate(lines):
+    for i, rawline in enumerate(lines[leading:]):
         line = rawline.strip()
         if '|' in line:
             if re.search(r"^\|?\s*:?--", line):
                 formatline = line
-                formatrow = i
+                formatrow = leading + i
                 break
 
     # Delete the separator line from the content.
@@ -62,7 +67,7 @@ def normtable(text):
         if ends in ['::', '-:']:
             justify.append(ends)
         else:
-            justify.append(':-')
+            justify.append('--')
 
     # Assume the number of columns in the separator line is the number
     # for the entire table.
@@ -70,12 +75,15 @@ def normtable(text):
 
     # Extract the content into a matrix.
     content = []
-    for line in lines:
+    trailing = []
+    for line in lines[leading:]:
         if '|' in line:
             cells = line.strip('| \t').split('|')
             # Put exactly one space at each end as "bumpers."
             linecontent = [" {} ".format(x.strip()) for x in cells]
             content.append(linecontent)
+        else:
+            trailing.append(line)
 
     # Append empty cells to rows that don't have enough.
     for i, row in enumerate(content):
@@ -101,7 +109,7 @@ def normtable(text):
     formatted.insert(formatrow, formatline)
 
     # Return the formatted table.
-    return '\n'.join(formatted)
+    return '\n'.join(formatted + trailing)
 
 
 # Read the input, process, and print.
