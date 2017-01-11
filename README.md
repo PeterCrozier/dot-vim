@@ -14,7 +14,7 @@ Installing .vim
 
 * `git clone` the `.vim` directory from my repo
 
-		git clone git@github.com:PeterCrozier/dot-vim.git ~/.vim
+		git clone https://github.com:PeterCrozier/dot-vim.git ~/.vim
 
 * Symbolically link the rc files back into your home directory
 
