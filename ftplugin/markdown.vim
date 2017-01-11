@@ -4,8 +4,8 @@
 " enable spell check
 :setlocal spell spelllang=en_gb
 
-" fixup tables
+" fixup a table -- must position cursor before the table.
 nmap <leader>t !}~/.vim/scripts/norm_table.py<CR>
 
 " fixup headings
-nmap <leader>h :%!~/.vim/scripts/norm_hdrs.py<CR>
+nmap <leader>h :%!~/.vim/scripts/norm_hdrs.py<CR>'0
