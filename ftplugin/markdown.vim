@@ -8,4 +8,4 @@
 nmap <leader>t !}~/.vim/scripts/norm_table.py<CR>
 
 " fixup headings
-nmap <leader>h :%!~/.vim/scripts/norm_hdrs.py<CR>'0
+nmap <leader>h mz:%!~/.vim/scripts/norm_hdrs.py<CR>g`z
