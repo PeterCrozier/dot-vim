@@ -32,7 +32,7 @@ def normtable(text):
     # output array
     formatted = []
 
-    # pass through any leading lines not part of table
+    # pass through any leading lines not part of table, i.e. no pipe
     leading = 0
     for line in lines:
         if '|' in line:
@@ -47,16 +47,16 @@ def normtable(text):
     for i, rawline in enumerate(lines[leading:]):
         line = rawline.strip()
         if '|' in line:
-            if re.search(r"^\|?\s*:?--", line):
+            if re.search(r"\s*:?-+:?\s*\|", line):
                 formatline = line
                 formatrow = leading + i
                 break
 
     # Delete the separator line from the content.
-    if formatrow:
+    if formatrow != None:
         del lines[formatrow]
     else:
-        return "ERR: Can't find table separator"
+        return "ERR: Can't find table heading separator"
 
     # Determine how each column is to be justified.
     fields = formatline.strip('|').split('|')
@@ -78,7 +78,7 @@ def normtable(text):
     trailing = []
     for line in lines[leading:]:
         if '|' in line:
-            cells = line.strip('| \t').split('|')
+            cells = line.strip('|').split('|')
             # Put exactly one space at each end as "bumpers."
             linecontent = [" {} ".format(x.strip()) for x in cells]
             content.append(linecontent)
