@@ -1,4 +1,6 @@
-#!/usr/bin/python
+#!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 """
     Layout a markdown table in canonical form justifying all the columns.
     Assumes stdin contains only the table with maybe some leading or trailing blank lines.
@@ -113,6 +115,5 @@ def normtable(text):
 
 
 # Read the input, process, and print.
-unformatted = unicode(sys.stdin.read(), "utf-8")
-print(normtable(unformatted))
+print(normtable(sys.stdin.read()))
 

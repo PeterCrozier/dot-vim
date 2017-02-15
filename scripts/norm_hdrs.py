@@ -1,4 +1,6 @@
 #!/usr/bin/env python
+# -*- coding: utf-8 -*-
+
 """ Fixup h1 and h2 underlines """
 
 import sys
