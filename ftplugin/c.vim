@@ -6,3 +6,6 @@ map <C-K> :pyfile /usr/local/share/clang/clang-format.py<cr><cr>
 
 " autocomplete braces
 inoremap {<CR> {<CR>}<C-o>O
+
+" Clang error format
+setlocal errorformat=%f:%l:%c:\ %t%s:\ %m
