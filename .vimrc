@@ -117,7 +117,8 @@ if has("autocmd")
 endif
 
 " support ctags if available
-set tags=./tags;$HOME
+" search current dir then move up until vim finds one
+set tags=./tags,tags;
 
 " run clang-format via CTRL-K TODO C,C++ only?
 " formats current line in normal mode or the selected region in visual mode
