@@ -35,19 +35,12 @@ filetype plugin indent on
 
 function SetTabs ()
 " These tests have to be in an au command function called per buffer/window
-if &filetype == "c"
+if &filetype == "c" || &filetype == "cpp" || &filetype == "arduino" || &filetype == "verilog" || &filetype == "systemverilog"
 	" C specifics, default fo=croql
 	setlocal formatoptions-=o	" don't autocomment new lines added with o or O
 	setlocal formatoptions+=j	" join comments sensibly
 	setlocal comments=sl:/*,mb:**,ex:*/,:// 
 	setlocal commentstring=//\	%s
-elseif &filetype == "arduino"
-	" C specifics, default fo=croql
-	setlocal formatoptions-=o	" don't autocomment new lines added with o or O
-	setlocal formatoptions+=j	" join comments sensibly
-	setlocal comments=sl:/*,mb:**,ex:*/,:// 
-	setlocal commentstring=//\	%s
-	setlocal cindent
 elseif &filetype == "ruby"
 	" Ruby specifics
 	setlocal ts=2 bs=2 shiftwidth=2 smarttab expandtab
@@ -64,14 +57,9 @@ elseif &filetype == "swift"
 	" using pathogen bundle: https://github.com/Keithbsmiley/swift.vim
 	setlocal ts=8 shiftwidth=0 softtabstop=0 nosmarttab noexpandtab
 	setlocal commentstring=//\	%s
-elseif &filetype == "verilog"
+elseif &filetype == "verilog" || &filetype == "systemverilog"
 	" the built-in syntax wraps at 78
 	setlocal textwidth=0
-	setlocal formatoptions+=j	" join comments sensibly
-	setlocal formatoptions-=o	" don't autocomment new lines added with o or O
-	setlocal comments=sl:/*,mb:**,ex:*/,:// 
-	setlocal commentstring=//\	%s
-	setlocal cindent
 endif
 endfunction
 autocmd BufEnter * call SetTabs()
