@@ -116,3 +116,21 @@ includes all the C snippets
 | **forin** | `for (auto %x: c) {}`             |
 | vec       | `std::vector<int> v;`             |
 | map       | `std::map<key, value> m;`         |
+
+
+Verilog
+-------
+
+| key    | expands to        |
+|--------|-------------------|
+| al     | always block      |
+| mod    | module block      |
+| if     | if statement      |
+| ife    | if else           |
+| eif    | else if           |
+| el     | else statement    |
+| while  | while statement   |
+| repeat | repeat statement  |
+| case   | case statement    |
+| casez  | casez statement   |
+| inc    | include statement |
