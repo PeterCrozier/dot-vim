@@ -3,6 +3,7 @@
 "
 set autoindent
 set history=10
+set nomodeline
 
 " search options
 set ignorecase smartcase
@@ -57,7 +58,8 @@ elseif &filetype == "swift"
 	" using pathogen bundle: https://github.com/Keithbsmiley/swift.vim
 	setlocal ts=8 shiftwidth=0 softtabstop=0 nosmarttab noexpandtab
 	setlocal commentstring=//\	%s
-elseif &filetype == "verilog" || &filetype == "systemverilog"
+endif
+if &filetype == "verilog" || &filetype == "systemverilog"
 	" the built-in syntax wraps at 78
 	setlocal textwidth=0
 endif
@@ -146,6 +148,9 @@ highlight StatusLineNC guibg=Grey ctermfg=8 guifg=White ctermbg=15
 " syntastic flags
 let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
+" syntastic does not understand systemverilog filetype
+let g:syntastic_filetype_map = { "systemverilog": "verilog" }
+
 
 "set statusline+=%#warningmsg#
 "set statusline+=%{SyntasticStatuslineFlag()}
