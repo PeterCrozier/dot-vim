@@ -150,6 +150,7 @@ let g:syntastic_cpp_compiler = 'clang++'
 let g:syntastic_cpp_compiler_options = ' -std=c++14 -stdlib=libc++'
 " syntastic does not understand systemverilog filetype
 let g:syntastic_filetype_map = { "systemverilog": "verilog" }
+"let g:syntastic_verilog_checkers = ['iverilog']
 
 
 "set statusline+=%#warningmsg#

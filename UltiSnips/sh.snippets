@@ -1,0 +1,6 @@
+
+snippet sbash "safe bash options for Macs"
+set -eo pipefail		# exit immediately if command returns non-zero
+shopt -s nullglob		# glob issues empty string if no files match
+$0
+endsnippet

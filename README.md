@@ -14,7 +14,7 @@ Installing .vim
 
 * `git clone` the `.vim` directory from my repo
 
-		git clone https://github.com:PeterCrozier/dot-vim.git ~/.vim
+		git clone https://github.com/PeterCrozier/dot-vim.git ~/.vim
 
 * Symbolically link the rc files back into your home directory
 
@@ -45,3 +45,25 @@ Managing bundles
 * To remove a submodule from the directory use
 
 		git submodule deinit --force bundle/vim-fugitive
+
+Syntastic
+---------
+
+To support SystemVerilog you need this in the `.vimrc`:
+
+	" syntastic does not understand systemverilog filetype
+	let g:syntastic_filetype_map = { "systemverilog": "verilog" }
+	
+Verilator 4.032 (2020-04-04) added column numbers to the error format so I hacked the syntax checker to add two new patterns:
+
+	function! SyntaxCheckers_verilog_verilator_GetLocList() dict
+	    return syntastic#c#GetLocList('verilog', 'verilator', {
+		\ 'errorformat':
+		\     '%%%trror-%\=%\w%#: %f:%l:%c: %m,' .      <-----
+		\     '%%%trror-%\=%\w%#: %f:%l: %m,' .
+		\     '%%%tarning-%\=%\w%#: %f:%l:%c: %m,' . 	<-----
+		\     '%%%tarning-%\=%\w%#: %f:%l: %m',
+		\ 'main_flags': '--lint-only' })
+	endfunction
+
+
