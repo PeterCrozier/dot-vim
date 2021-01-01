@@ -15,6 +15,7 @@ unlet b:current_syntax
 " s65 extentions
 syn match a65Type	"\(^\|\s\)\.org\($\|\s\)"
 syn match a65Type	"\(^\|\s\)\.byte\($\|\s\)"
+syn match a65Type	"\(^\|\s\)\.asciiz\($\|\s\)"
 
 syn match a65Opcode	"\<STP\($\|\s\)"
 
