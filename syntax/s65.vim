@@ -13,11 +13,23 @@ runtime! syntax/a65.vim
 unlet b:current_syntax
 
 " s65 extentions
+syn case ignore
+
+syn match a65Opcode	"\<STP\($\|\s\)"
+syn match a65Opcode	"\<TSB\($\|\s\)" nextgroup=a65Address
+
+syn case match
+
 syn match a65Type	"\(^\|\s\)\.org\($\|\s\)"
 syn match a65Type	"\(^\|\s\)\.byte\($\|\s\)"
 syn match a65Type	"\(^\|\s\)\.asciiz\($\|\s\)"
+syn match a65Type	"\(^\|\s\)\.macro\($\|\s\)"
+syn match a65Type	"\(^\|\s\)\.endmacro\($\|\s\)"
 
-syn match a65Opcode	"\<STP\($\|\s\)"
+syn match a65PreProc	"\(^\|\s\)\.if\($\|\s\)"
+syn match a65PreProc	"\(^\|\s\)\.ifdef\($\|\s\)"
+syn match a65PreProc	"\(^\|\s\)\.else\($\|\s\)"
+syn match a65PreProc	"\(^\|\s\)\.endif\($\|\s\)"
 
 let b:current_syntax = "s65"
 
