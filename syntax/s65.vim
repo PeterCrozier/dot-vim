@@ -35,26 +35,35 @@ syn case match
 
 " Directives
 
-syn match s65dir	"\(^\|\s\)\.align\($\|\s\)"
-syn match s65dir	"\(^\|\s\)\.asciiz\($\|\s\)"
-syn match s65dir	"\(^\|\s\)\.bss\($\|\s\)"
-syn match s65dir	"\(^\|\s\)\.byte\($\|\s\)"
-syn match s65dir	"\(^\|\s\)\.data\($\|\s\)"
-syn match s65dir	"\(^\|\s\)\.org\($\|\s\)"
-syn match s65dir	"\(^\|\s\)\.text\($\|\s\)"
-syn match s65dir	"\(^\|\s\)\.word\($\|\s\)"
+syn match s65dir	"\.align"
+syn match s65dir	"\.asciiz"
+syn match s65dir	"\.bss"
+syn match s65dir	"\.byte"
+syn match s65dir	"\.data"
+syn match s65dir	"\.db"
+syn match s65dir	"\.dw"
+syn match s65dir	"\.extern"
+syn match s65dir	"\.global"
+syn match s65dir	"\.org"
+syn match s65dir	"\.section"
+syn match s65dir	"\.text"
+syn match s65dir	"\.word"
+
+" Structures
+syn match s65struct	"\.struct"
+syn match s65struct	"\.endstruct"
 
 " Macros
-syn match s65macro	"\(^\|\s\)\.endmacro\($\|\s\)"
-syn match s65macro	"\(^\|\s\)\.macro\($\|\s\)"
+syn match s65macro	"\.endmacro"
+syn match s65macro	"\.macro"
 
 " Preprocessor
-syn match s65precond	"\(^\|\s\)\.if\($\|\s\)"
-syn match s65precond	"\(^\|\s\)\.ifdef\($\|\s\)"
-syn match s65precond	"\(^\|\s\)\.else\($\|\s\)"
-syn match s65precond	"\(^\|\s\)\.endif\($\|\s\)"
+syn match s65precond	"\.if"
+syn match s65precond	"\.ifdef"
+syn match s65precond	"\.else"
+syn match s65precond	"\.endif"
 
-syn match s65inc	"\(^\|\s\)\.include\($\|\s\)"
+syn match s65inc	"\.include"
 
 syn case ignore
 
@@ -83,15 +92,16 @@ hi def link s65precond	PreCondit
 hi def link s65number	Number
 hi def link s65string	String
 hi def link s65dir	Statement
-hi def link s65opcode	Type
-hi def link s65ext	Type
+hi def link s65opcode	Keyword
+hi def link s65ext	Keyword
 hi def link s65todo	Todo
 hi def link s65hilo	Number
-hi def link s65label	Function
+hi def link s65label	Special
 hi def link s65local	None
 hi def link s65symbol	None
 hi def link s65macro	Macro
 hi def link s65inc	Include
+hi def link s65struct	Structure
 
 let b:current_syntax = "s65"
 
