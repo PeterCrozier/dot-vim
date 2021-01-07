@@ -14,11 +14,11 @@ syn clear
 syn case ignore
 
 " Symbols
-syn match s65symbol	"[a-z][a-z0-9]*"
+syn match s65symbol	"[a-z][a-z0-9_]*"
 
 " Labels
-syn match s65label	"[a-z][a-z0-9]*:"
-syn match s65local	"\.[a-z][a-z0-9]*:"
+syn match s65label	"[a-z_][a-z0-9_]*:"
+syn match s65local	"\.[a-z_][a-z0-9_]*:"
 
 " Opcodes
 syn keyword s65opcode
@@ -37,10 +37,15 @@ syn case match
 
 syn match s65dir	"\.align"
 syn match s65dir	"\.asciiz"
+syn match s65dir	"\.blk"
+syn match s65dir	"\.blkw"
 syn match s65dir	"\.bss"
 syn match s65dir	"\.byte"
 syn match s65dir	"\.data"
 syn match s65dir	"\.db"
+syn match s65dir	"\.ds"
+syn match s65dir	"\.dsb"
+syn match s65dir	"\.dsw"
 syn match s65dir	"\.dw"
 syn match s65dir	"\.extern"
 syn match s65dir	"\.global"
@@ -48,6 +53,7 @@ syn match s65dir	"\.org"
 syn match s65dir	"\.section"
 syn match s65dir	"\.text"
 syn match s65dir	"\.word"
+syn match s65dir	"\.zpage"
 
 " Structures
 syn match s65struct	"\.struct"
